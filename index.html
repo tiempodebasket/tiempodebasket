@@ -9,218 +9,64 @@
   <style>
     :root {
       --naranja: #E85C1A;
-      --naranja-oscuro: #b8430f;
       --negro: #0f0f0f;
       --gris-oscuro: #1a1a1a;
-      --gris-medio: #2a2a2a;
       --gris-borde: #333;
       --blanco: #f5f0eb;
       --texto-muted: #888;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--negro); color: var(--blanco); font-family: 'Barlow', sans-serif; min-height: 100vh; }
 
-    body {
-      background: var(--negro);
-      color: var(--blanco);
-      font-family: 'Barlow', sans-serif;
-      min-height: 100vh;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 3.5rem 1.5rem 2.5rem;
-      border-bottom: 1px solid var(--gris-borde);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,92,26,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 1.25rem;
-      text-decoration: none;
-    }
-    .logo-ball {
-      width: 52px;
-      height: 52px;
-    }
-    .logo-text {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-      color: var(--blanco);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
+    .hero { text-align: center; padding: 3.5rem 1.5rem 2.5rem; border-bottom: 1px solid var(--gris-borde); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,92,26,0.12) 0%, transparent 70%); pointer-events: none; }
+    .logo { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; text-decoration: none; }
+    .logo-ball { width: 52px; height: 52px; }
+    .logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2rem; color: var(--blanco); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; }
     .logo-text span { color: var(--naranja); }
-    .hero-tagline {
-      font-size: 1rem;
-      color: var(--texto-muted);
-      letter-spacing: 0.03em;
-    }
+    .hero-tagline { font-size: 1rem; color: var(--texto-muted); }
 
-    /* ── CANALES ── */
-    .section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem;
-    }
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--naranja);
-      margin-bottom: 1.25rem;
-    }
-    .channel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 3rem;
-    }
-    @media (max-width: 600px) {
-      .channel-grid { grid-template-columns: 1fr; }
-    }
-    .channel-card {
-      background: var(--gris-oscuro);
-      border: 1px solid var(--gris-borde);
-      border-radius: 10px;
-      padding: 1.25rem 1rem;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .channel-card:hover {
-      border-color: var(--naranja);
-      transform: translateY(-2px);
-    }
-    .channel-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .section { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+    .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--naranja); margin-bottom: 1.25rem; }
+
+    .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 3rem; }
+    @media (max-width: 600px) { .channel-grid { grid-template-columns: 1fr; } }
+    .channel-card { background: var(--gris-oscuro); border: 1px solid var(--gris-borde); border-radius: 10px; padding: 1.25rem 1rem; text-decoration: none; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s, transform 0.15s; }
+    .channel-card:hover { border-color: var(--naranja); transform: translateY(-2px); }
+    .channel-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
     .channel-icon svg { width: 22px; height: 22px; }
-    .icon-web { background: rgba(232,92,26,0.15); }
-    .icon-web svg { fill: var(--naranja); }
-    .icon-yt { background: rgba(255,0,0,0.12); }
-    .icon-yt svg { fill: #ff4444; }
-    .icon-ivoox { background: rgba(0,120,212,0.12); }
-    .icon-ivoox svg { fill: #4da6ff; }
-    .channel-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--blanco);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .channel-desc {
-      font-size: 0.8rem;
-      color: var(--texto-muted);
-      line-height: 1.5;
-    }
+    .icon-web { background: rgba(232,92,26,0.15); } .icon-web svg { fill: var(--naranja); }
+    .icon-yt  { background: rgba(255,0,0,0.12); }  .icon-yt svg  { fill: #ff4444; }
+    .icon-ivoox { background: rgba(0,120,212,0.12); } .icon-ivoox svg { fill: #4da6ff; }
+    .channel-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blanco); text-transform: uppercase; letter-spacing: 0.04em; }
+    .channel-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
 
-    /* ── FEEDS ── */
-    .feeds-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 700px) {
-      .feeds-grid { grid-template-columns: 1fr; }
-    }
-    .feed-col {}
-    .feed-col-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--texto-muted);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .feed-dot {
-      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-    }
-    .dot-web { background: var(--naranja); }
-    .dot-yt { background: #ff4444; }
-    .dot-pod { background: #4da6ff; }
-
-    .feed-list { display: flex; flex-direction: column; gap: 1px; }
-    .feed-item {
-      display: block;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid var(--gris-borde);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
+    .feeds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 700px) { .feeds-grid { grid-template-columns: 1fr; } }
+    .feed-col-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--texto-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
+    .feed-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dot-web { background: var(--naranja); } .dot-yt { background: #ff4444; } .dot-pod { background: #4da6ff; }
+    .feed-list { display: flex; flex-direction: column; }
+    .feed-item { display: block; padding: 0.7rem 0; border-bottom: 1px solid var(--gris-borde); text-decoration: none; }
     .feed-item:last-child { border-bottom: none; }
     .feed-item:hover .feed-item-title { color: var(--naranja); }
-    .feed-item-title {
-      font-size: 0.85rem;
-      color: var(--blanco);
-      line-height: 1.45;
-      transition: color 0.15s;
-    }
-    .feed-item-date {
-      font-size: 0.72rem;
-      color: var(--texto-muted);
-      margin-top: 3px;
-    }
-    .feed-loading {
-      font-size: 0.8rem;
-      color: var(--texto-muted);
-      padding: 0.5rem 0;
-      font-style: italic;
-    }
-    .feed-error {
-      font-size: 0.78rem;
-      color: #ff6b6b;
-      padding: 0.5rem 0;
-    }
+    .feed-item-title { font-size: 0.85rem; color: var(--blanco); line-height: 1.45; transition: color 0.15s; }
+    .feed-item-date { font-size: 0.72rem; color: var(--texto-muted); margin-top: 3px; }
+    .feed-loading { font-size: 0.8rem; color: var(--texto-muted); padding: 0.5rem 0; font-style: italic; }
+    .feed-error { font-size: 0.78rem; color: #ff6b6b; padding: 0.5rem 0; line-height: 1.5; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--gris-borde);
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--texto-muted);
-    }
+    footer { border-top: 1px solid var(--gris-borde); text-align: center; padding: 1.5rem; font-size: 0.78rem; color: var(--texto-muted); }
     footer a { color: var(--naranja); text-decoration: none; }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
   <header class="hero">
     <a class="logo" href="https://www.tiempodebasket.com" target="_blank">
       <svg class="logo-ball" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="26" cy="26" r="25" fill="#E85C1A" stroke="#b8430f" stroke-width="1"/>
-        <path d="M26 1C26 1 26 51 26 51" stroke="#b8430f" stroke-width="1.5"/>
-        <path d="M1 26C1 26 51 26 51 26" stroke="#b8430f" stroke-width="1.5"/>
-        <path d="M8 10 Q26 20 44 10" stroke="#b8430f" stroke-width="1.2" fill="none"/>
-        <path d="M8 42 Q26 32 44 42" stroke="#b8430f" stroke-width="1.2" fill="none"/>
+        <path d="M26 1v50M1 26h50" stroke="#b8430f" stroke-width="1.5"/>
+        <path d="M8 10 Q26 20 44 10M8 42 Q26 32 44 42" stroke="#b8430f" stroke-width="1.2" fill="none"/>
       </svg>
       <div class="logo-text">Tiempo<br>de <span>Basket</span></div>
     </a>
@@ -228,8 +74,6 @@
   </header>
 
   <main class="section">
-
-    <!-- CANALES -->
     <p class="section-title">Mis canales</p>
     <div class="channel-grid">
       <a class="channel-card" href="https://www.tiempodebasket.com" target="_blank">
@@ -255,38 +99,21 @@
       </a>
     </div>
 
-    <!-- ÚLTIMAS PUBLICACIONES -->
     <p class="section-title">Últimas publicaciones</p>
     <div class="feeds-grid">
       <div class="feed-col">
-        <div class="feed-col-title">
-          <span class="feed-dot dot-web"></span>
-          Artículos
-        </div>
-        <div class="feed-list" id="feed-web">
-          <span class="feed-loading">Cargando...</span>
-        </div>
+        <div class="feed-col-title"><span class="feed-dot dot-web"></span>Artículos</div>
+        <div class="feed-list" id="feed-web"><span class="feed-loading">Cargando...</span></div>
       </div>
       <div class="feed-col">
-        <div class="feed-col-title">
-          <span class="feed-dot dot-yt"></span>
-          YouTube
-        </div>
-        <div class="feed-list" id="feed-yt">
-          <span class="feed-loading">Cargando...</span>
-        </div>
+        <div class="feed-col-title"><span class="feed-dot dot-yt"></span>YouTube</div>
+        <div class="feed-list" id="feed-yt"><span class="feed-loading">Cargando...</span></div>
       </div>
       <div class="feed-col">
-        <div class="feed-col-title">
-          <span class="feed-dot dot-pod"></span>
-          Podcast
-        </div>
-        <div class="feed-list" id="feed-pod">
-          <span class="feed-loading">Cargando...</span>
-        </div>
+        <div class="feed-col-title"><span class="feed-dot dot-pod"></span>Podcast</div>
+        <div class="feed-list" id="feed-pod"><span class="feed-loading">Cargando...</span></div>
       </div>
     </div>
-
   </main>
 
   <footer>
@@ -294,63 +121,95 @@
   </footer>
 
   <script>
-    const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+    // ════════════════════════════════════════════
+    // CONFIGURACIÓN — edita solo esta línea
+    const YT_CHANNEL_ID = 'PON_AQUI_TU_CHANNEL_ID';
+    // Ejemplo: 'UCwEeJuTR5Q6TJlVILjAlVhA'
+    // ════════════════════════════════════════════
 
-    function formatDate(dateStr) {
-      const d = new Date(dateStr);
+    function formatDate(str) {
+      const d = new Date(str);
       if (isNaN(d)) return '';
       return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
     }
 
-    function renderItems(containerId, items, linkFallback) {
-      const el = document.getElementById(containerId);
-      if (!items || items.length === 0) {
-        el.innerHTML = '<span class="feed-error">No se pudieron cargar las entradas.</span>';
-        return;
-      }
-      el.innerHTML = items.slice(0, 5).map(item => `
-        <a class="feed-item" href="${item.link || linkFallback}" target="_blank" rel="noopener">
+    function renderItems(id, items, fallback) {
+      const el = document.getElementById(id);
+      if (!items || !items.length) { el.innerHTML = '<span class="feed-error">Sin entradas disponibles.</span>'; return; }
+      el.innerHTML = items.slice(0, 5).map(item =>
+        `<a class="feed-item" href="${item.link || fallback}" target="_blank" rel="noopener">
           <div class="feed-item-title">${item.title}</div>
-          <div class="feed-item-date">${formatDate(item.pubDate)}</div>
-        </a>
-      `).join('');
+          <div class="feed-item-date">${formatDate(item.pubDate || item.date)}</div>
+        </a>`
+      ).join('');
     }
 
-    function showError(containerId) {
-      document.getElementById(containerId).innerHTML =
-        '<span class="feed-error">No se pudo cargar el feed. Inténtalo más tarde.</span>';
+    function showError(id, msg) {
+      document.getElementById(id).innerHTML = `<span class="feed-error">${msg || 'No se pudo cargar el feed.'}</span>`;
     }
 
-    // ── Web (WordPress RSS) ──
-    fetch(RSS2JSON + encodeURIComponent('https://www.tiempodebasket.com/feed'))
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === 'ok') renderItems('feed-web', data.items, 'https://www.tiempodebasket.com');
-        else showError('feed-web');
-      })
-      .catch(() => showError('feed-web'));
+    // Parsea XML (soporta RSS y Atom)
+    function parseXML(xmlStr, fallback) {
+      const xml = new DOMParser().parseFromString(xmlStr, 'text/xml');
+      const isAtom = !!xml.querySelector('entry');
+      const nodes = Array.from(xml.querySelectorAll(isAtom ? 'entry' : 'item'));
+      return nodes.map(n => {
+        if (isAtom) {
+          const linkEl = n.querySelector('link[rel="alternate"]') || n.querySelector('link');
+          return {
+            title: n.querySelector('title')?.textContent?.trim() || '',
+            link: linkEl?.getAttribute('href') || fallback,
+            pubDate: n.querySelector('published, updated')?.textContent || ''
+          };
+        }
+        return {
+          title: n.querySelector('title')?.textContent?.trim() || '',
+          link: n.querySelector('link')?.textContent?.trim() || fallback,
+          pubDate: n.querySelector('pubDate')?.textContent || ''
+        };
+      });
+    }
 
-    // ── YouTube (RSS nativo del canal) ──
-    // El channel ID de @tiempod3basket — se usa el feed RSS público de YouTube
-    // IMPORTANTE: reemplaza CHANNEL_ID_AQUI por el ID real del canal (ver README)
-    const YT_CHANNEL_ID = 'UCwEeJuTR5Q6TJlVILjAlVhA'; // ID del canal @tiempod3basket
-    const ytRss = `https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
-    fetch(RSS2JSON + encodeURIComponent(ytRss))
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === 'ok') renderItems('feed-yt', data.items, 'https://www.youtube.com/@tiempod3basket');
-        else showError('feed-yt');
-      })
-      .catch(() => showError('feed-yt'));
+    // Carga con doble intento: rss2json → allorigins
+    async function loadFeed(id, rssUrl, fallback) {
+      // Intento 1: rss2json
+      try {
+        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl));
+        const data = await res.json();
+        if (data.status === 'ok' && data.items?.length) { renderItems(id, data.items, fallback); return; }
+      } catch(_) {}
 
-    // ── iVoox (RSS del podcast) ──
-    fetch(RSS2JSON + encodeURIComponent('https://www.ivoox.com/feed_fg_f21033677_filtro_1.xml'))
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === 'ok') renderItems('feed-pod', data.items, 'https://www.ivoox.com/audios-tiempo-de-basket_s0_f21033677_p2_1.html');
-        else showError('feed-pod');
-      })
-      .catch(() => showError('feed-pod'));
+      // Intento 2: allorigins + parse XML
+      try {
+        const res = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl));
+        const data = await res.json();
+        if (!data.contents) throw new Error();
+        const items = parseXML(data.contents, fallback);
+        if (!items.length) throw new Error();
+        renderItems(id, items, fallback);
+      } catch(_) {
+        showError(id);
+      }
+    }
+
+    // ── Web ──
+    loadFeed('feed-web', 'https://www.tiempodebasket.com/feed', 'https://www.tiempodebasket.com');
+
+    // ── YouTube ──
+    if (YT_CHANNEL_ID === 'PON_AQUI_TU_CHANNEL_ID') {
+      showError('feed-yt', '⚠ Abre el archivo index.html con un editor de texto, busca PON_AQUI_TU_CHANNEL_ID y reemplázalo por tu Channel ID de YouTube (empieza por UC...).');
+    } else {
+      loadFeed('feed-yt',
+        'https://www.youtube.com/feeds/videos.xml?channel_id=' + YT_CHANNEL_ID,
+        'https://www.youtube.com/@tiempod3basket'
+      );
+    }
+
+    // ── iVoox ──
+    loadFeed('feed-pod',
+      'https://www.ivoox.com/feed_fg_f21033677_filtro_1.xml',
+      'https://www.ivoox.com/audios-tiempo-de-basket_s0_f21033677_p2_1.html'
+    );
   </script>
 </body>
 </html>
