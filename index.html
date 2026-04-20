@@ -122,7 +122,7 @@
 
   <script>
     // ════════════════════════════════════════════
-    // CONFIGURACIÓN — edita solo esta línea
+    // CONFIGURACIÓN — solo tienes que tocar esto
     const YT_CHANNEL_ID = 'UCwEeJuTR5Q6TJlVILjAlVhA';
     // Ejemplo: 'UCwEeJuTR5Q6TJlVILjAlVhA'
     // ════════════════════════════════════════════
@@ -148,7 +148,6 @@
       document.getElementById(id).innerHTML = `<span class="feed-error">${msg || 'No se pudo cargar el feed.'}</span>`;
     }
 
-    // Parsea XML (soporta RSS y Atom)
     function parseXML(xmlStr, fallback) {
       const xml = new DOMParser().parseFromString(xmlStr, 'text/xml');
       const isAtom = !!xml.querySelector('entry');
@@ -170,7 +169,6 @@
       });
     }
 
-    // Carga con doble intento: rss2json → allorigins
     async function loadFeed(id, rssUrl, fallback) {
       // Intento 1: rss2json
       try {
@@ -179,7 +177,7 @@
         if (data.status === 'ok' && data.items?.length) { renderItems(id, data.items, fallback); return; }
       } catch(_) {}
 
-      // Intento 2: allorigins + parse XML
+      // Intento 2: allorigins + parse XML manual
       try {
         const res = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl));
         const data = await res.json();
@@ -193,11 +191,14 @@
     }
 
     // ── Web ──
-    loadFeed('feed-web', 'https://www.tiempodebasket.com/feed', 'https://www.tiempodebasket.com');
+    loadFeed('feed-web',
+      'https://www.tiempodebasket.com/feed',
+      'https://www.tiempodebasket.com'
+    );
 
     // ── YouTube ──
     if (YT_CHANNEL_ID === 'UCwEeJuTR5Q6TJlVILjAlVhA') {
-      showError('feed-yt', '⚠ Abre el archivo index.html con un editor de texto, busca PON_AQUI_TU_CHANNEL_ID y reemplázalo por tu Channel ID de YouTube (empieza por UC...).');
+      showError('feed-yt', '⚠ Abre index.html, busca PON_AQUI_TU_CHANNEL_ID y reemplázalo por tu Channel ID de YouTube (empieza por UC...).');
     } else {
       loadFeed('feed-yt',
         'https://www.youtube.com/feeds/videos.xml?channel_id=' + YT_CHANNEL_ID,
@@ -208,7 +209,7 @@
     // ── iVoox ──
     loadFeed('feed-pod',
       'https://feeds.ivoox.com/feed_fg_f11240642_filtro_1.xml',
-      'https://feeds.ivoox.com/feed_fg_f11240642_filtro_1.xml'
+      'https://www.ivoox.com/audios-tiempo-de-basket_s0_f21033677_p2_1.html'
     );
   </script>
 </body>
